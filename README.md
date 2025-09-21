@@ -347,7 +347,7 @@ diabetic_retinopathy_preprocessing/
 |   └── IT24100348_feature_engineering.ipynb
 |   └── IT24100349_outlier_detection&removal.ipynb
 |   └── IT24610824_class_balancing&augmentation.ipynb
-├──pipeline.ipynb
+├── pipeline.ipynb
 ├── results/
     └── eda_visualization/
     └── logs/
