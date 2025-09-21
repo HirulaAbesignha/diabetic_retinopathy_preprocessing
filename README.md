@@ -341,12 +341,12 @@ diabetic_retinopathy_preprocessing/
 |   └── raw/
 |   └── external/
 ├── cache/
-|   └── youssefedweqd/
-|   └── youssefedweqd/
-|   └── youssefedweqd/
-|   └── youssefedweqd/
-|   └── youssefedweqd/
-|   └── youssefedweqd/
+|   └── IT24100255_data_splitting&scaling.ipynb
+|   └── IT24100259_data_loading&missing_data.ipynb
+|   └── IT24100264_image_normalization&preprocessing.ipynb
+|   └── IT24100348_feature_engineering.ipynb
+|   └── IT24100349_outlier_detection&removal.ipynb
+|   └── IT24610824_class_balancing&augmentation.ipynb
 ├──pipeline.ipynb
 ├── results/
     └── eda_visualization/
