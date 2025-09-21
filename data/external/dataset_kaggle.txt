@@ -1,0 +1,3 @@
+KAGGLE DATASET
+
+https://www.kaggle.com/competitions/diabetic-retinopathy-detection/data

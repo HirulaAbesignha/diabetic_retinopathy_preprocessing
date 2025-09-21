@@ -1,0 +1,5 @@
+HUGGINGFACE DATASET
+
+https://huggingface.co/datasets/youssefedweqd/Diabetic_Retinopathy_Detection_preprocessed2
+
+we are using a preprocessed dataset
