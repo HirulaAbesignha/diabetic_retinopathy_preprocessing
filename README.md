@@ -26,7 +26,7 @@ Diabetic retinopathy is a leading cause of blindness worldwide. Early detection 
 
 ### Class Distribution
 ```
-Class 0 (No DR):           ~19,000 samples (75.0%)
+Class 0 (No DR):          ~19,000 samples (75.0%)
 Class 1 (Mild):           ~2,400 samples (9.5%)
 Class 2 (Moderate):       ~2,400 samples (9.5%)
 Class 3 (Severe):         ~873 samples (3.5%)
