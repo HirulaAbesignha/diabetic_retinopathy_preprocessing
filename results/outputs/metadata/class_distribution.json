@@ -1,0 +1,22 @@
+{
+  "original": {
+    "2": 80,
+    "1": 120,
+    "0": 750,
+    "4": 20,
+    "3": 30
+  },
+  "class_names": {
+    "0": "No DR",
+    "1": "Mild",
+    "2": "Moderate",
+    "3": "Severe",
+    "4": "Proliferative DR"
+  },
+  "preprocessing_applied": {
+    "normalization": "CLAHE + ImageNet",
+    "augmentation": "Class-aware (higher for severe cases)",
+    "outlier_removal": "IQR-based filtering",
+    "missing_data_handling": "Validation and removal"
+  }
+}

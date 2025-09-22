@@ -1,0 +1,18 @@
+DIABETIC RETINOPATHY FEATURE DESCRIPTIONS
+==================================================
+
+brightness_mean:
+  Average pixel intensity across image (medical: overall exposure)
+
+contrast_std:
+  Standard deviation of pixels (medical: image clarity)
+
+red_dominance:
+  Red channel dominance ratio (medical: hemorrhage indicator)
+
+green_vessel_density:
+  Vessel density from green channel (medical: vascular network)
+
+texture_variance:
+  Laplacian texture variance (medical: lesion complexity)
+

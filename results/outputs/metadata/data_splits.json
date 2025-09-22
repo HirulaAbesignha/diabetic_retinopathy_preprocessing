@@ -1,0 +1,9 @@
+{
+  "total_samples": 1000,
+  "train_samples": 700,
+  "validation_samples": 100,
+  "test_samples": 200,
+  "train_ratio": 0.7,
+  "validation_ratio": 0.1,
+  "test_ratio": 0.2
+}

@@ -1,0 +1,20 @@
+{
+  "train": {
+    "success_rate": 100.0,
+    "avg_time": 0.024678564071655272,
+    "successful": 20,
+    "failed": 0
+  },
+  "val": {
+    "success_rate": 100.0,
+    "avg_time": 0.009972000122070312,
+    "successful": 10,
+    "failed": 0
+  },
+  "test": {
+    "success_rate": 100.0,
+    "avg_time": 0.006229305267333984,
+    "successful": 10,
+    "failed": 0
+  }
+}

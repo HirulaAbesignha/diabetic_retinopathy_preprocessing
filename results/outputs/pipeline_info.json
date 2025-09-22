@@ -1,0 +1,19 @@
+{
+  "image_size": 224,
+  "batch_size": 16,
+  "preprocessing_steps": [
+    "Data validation (Member 1)",
+    "Outlier filtering (Member 2)",
+    "Image resizing and augmentation (Member 3)",
+    "CLAHE enhancement and normalization (Member 4)",
+    "Global scaling (Member 6)"
+  ],
+  "scaling_parameters": {
+    "global_mean": 109.4595947265625,
+    "global_std": 52.08502960205078,
+    "global_min": 0.0,
+    "global_max": 255.0,
+    "pixels_analyzed": 150600
+  },
+  "ready_for_training": true
+}
