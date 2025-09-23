@@ -1,7 +1,7 @@
 # IT24100348: FEATURE ENGINEERING
 
 def extract_retinal_features(samples):
-    """Extract medical features from retinal images"""
+    #Extract medical features from retinal images
     features = {
         'brightness_mean': [], 'contrast_std': [], 'red_dominance': [],
         'green_vessel_density': [], 'texture_variance': []
@@ -20,7 +20,7 @@ def extract_retinal_features(samples):
     return {k: np.array(v) for k, v in features.items() if v}
 
 def extract_single_features(img):
-    """Extract features from single image"""
+    #Extract features from single image
     features = {}
     gray = cv2.cvtColor(img, cv2.COLOR_RGB2GRAY) if len(img.shape) == 3 else img
     
@@ -42,7 +42,7 @@ def extract_single_features(img):
     return features
 
 def analyze_feature_correlations(features, samples):
-    """Analyze feature correlations with DR severity"""
+    #Analyze feature correlations with DR severity
     labels = []
     for i, sample in enumerate(samples):
         if i >= len(list(features.values())[0]):
@@ -63,8 +63,8 @@ def analyze_feature_correlations(features, samples):
     
     return correlations
 
-def visualize_member5_eda(features, correlations, samples):
-    """IT24100348 EDA: Feature analysis visualization"""
+def feature_eda(features, correlations, samples):
+    #IT24100348 EDA: Feature analysis visualization
     fig, ((ax1, ax2), (ax3, ax4)) = plt.subplots(2, 2, figsize=(14, 10))
     
     # Correlation with target

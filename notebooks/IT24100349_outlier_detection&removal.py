@@ -1,7 +1,7 @@
 # IT24100349: OUTLIER DETECTION & REMOVAL
 
 def detect_outliers(samples):
-    """Detect outliers using IQR method"""
+    #Detect outliers using IQR method
     stats = {'brightness': [], 'contrast': [], 'width': [], 'height': []}
     
     for sample in samples[:min(500, len(samples))]:
@@ -31,8 +31,8 @@ def detect_outliers(samples):
     
     return outliers_info
 
-def visualize_member2_eda(outliers_info):
-    """IT24100349 EDA: Outlier detection visualization"""
+def outlier_eda(outliers_info):
+    #IT24100349 EDA: Outlier detection visualization
     fig, axes = plt.subplots(2, 2, figsize=(12, 8))
     axes = axes.flatten()
     

@@ -1,13 +1,13 @@
 # IT24610824: CLASS BALANCING & AUGMENTATION
 
 def analyze_class_distribution(samples):
-    """Analyze class distribution"""
+    #Analyze class distribution
     class_counts = Counter(int(sample['label']) for sample in samples)
     imbalance_ratio = max(class_counts.values()) / min(class_counts.values())
     return class_counts, imbalance_ratio
 
 def create_balancing_strategy(class_counts, target_samples=300):
-    """Create balancing strategy"""
+    #Create balancing strategy
     strategy = {}
     for cls, count in class_counts.items():
         if count < target_samples:
@@ -19,7 +19,7 @@ def create_balancing_strategy(class_counts, target_samples=300):
     return strategy
 
 def apply_augmentation(image, label):
-    """Apply augmentation based on class"""
+    #Apply augmentation based on class
     aug_prob = {0: 0.2, 1: 0.4, 2: 0.6, 3: 0.8, 4: 0.8}
     
     if np.random.random() < aug_prob.get(label, 0.3):
@@ -32,8 +32,8 @@ def apply_augmentation(image, label):
             image = cv2.warpAffine(image, M, (w, h))
     return image
 
-def visualize_member3_eda(class_counts, strategy):
-    """IT24610824 EDA: Class distribution visualization"""
+def balance_augment_eda(class_counts, strategy):
+    #IT24610824 EDA: Class distribution visualization
     fig, ((ax1, ax2), (ax3, ax4)) = plt.subplots(2, 2, figsize=(14, 10))
     
     classes = list(class_counts.keys())

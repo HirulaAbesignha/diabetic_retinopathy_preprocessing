@@ -1,7 +1,7 @@
 # IT24100259: DATA LOADING & MISSING DATA HANDLING
 
 def load_dataset():
-    """Load diabetic retinopathy dataset"""
+    #Load diabetic retinopathy dataset
     try:
         ds = load_dataset("youssefedweqd/Diabetic_Retinopathy_Detection_preprocessed2", 
                          streaming=True, cache_dir="./cache")
@@ -18,7 +18,7 @@ def load_dataset():
         return create_simulated_dataset()
 
 def create_simulated_dataset():
-    """Create simulated retinal images"""
+    #Create simulated retinal images
     np.random.seed(42)
     samples = []
     class_distribution = [750, 120, 80, 30, 20]
@@ -40,7 +40,7 @@ def create_simulated_dataset():
     return samples
 
 def analyze_missing_data(samples):
-    """Analyze missing data"""
+    #Analyze missing data
     missing_images = missing_labels = valid_samples = 0
     
     for sample in samples:
@@ -58,8 +58,8 @@ def analyze_missing_data(samples):
         'total_samples': len(samples)
     }
 
-def visualize_member1_eda(missing_info):
-    """IT24100259 EDA: Missing data visualization"""
+def missing_data_eda(missing_info):
+    #IT24100259 EDA: Missing data visualization
     fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(12, 5))
     
     categories = ['Valid', 'Missing Images', 'Missing Labels']

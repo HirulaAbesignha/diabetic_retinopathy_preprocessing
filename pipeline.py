@@ -61,7 +61,7 @@ def check_memory():
 # IT24100259: DATA LOADING & MISSING DATA HANDLING
 
 def load_dataset():
-    """Load diabetic retinopathy dataset"""
+    #Load diabetic retinopathy dataset
     try:
         ds = load_dataset("youssefedweqd/Diabetic_Retinopathy_Detection_preprocessed2", 
                          streaming=True, cache_dir="./cache")
@@ -78,7 +78,7 @@ def load_dataset():
         return create_simulated_dataset()
 
 def create_simulated_dataset():
-    """Create simulated retinal images"""
+    #Create simulated retinal images
     np.random.seed(42)
     samples = []
     class_distribution = [750, 120, 80, 30, 20]
@@ -100,7 +100,7 @@ def create_simulated_dataset():
     return samples
 
 def analyze_missing_data(samples):
-    """Analyze missing data"""
+    #Analyze missing data
     missing_images = missing_labels = valid_samples = 0
     
     for sample in samples:
@@ -119,7 +119,7 @@ def analyze_missing_data(samples):
     }
 
 def missing_data_eda(missing_info):
-    """IT24100259 EDA: Missing data visualization"""
+    #IT24100259 EDA: Missing data visualization
     fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(12, 5))
     
     categories = ['Valid', 'Missing Images', 'Missing Labels']
@@ -140,7 +140,7 @@ def missing_data_eda(missing_info):
 # IT24100349: OUTLIER DETECTION & REMOVAL
 
 def detect_outliers(samples):
-    """Detect outliers using IQR method"""
+    #Detect outliers using IQR method
     stats = {'brightness': [], 'contrast': [], 'width': [], 'height': []}
     
     for sample in samples[:min(500, len(samples))]:
@@ -171,7 +171,7 @@ def detect_outliers(samples):
     return outliers_info
 
 def outlier_eda(outliers_info):
-    """IT24100349 EDA: Outlier detection visualization"""
+    #IT24100349 EDA: Outlier detection visualization
     fig, axes = plt.subplots(2, 2, figsize=(12, 8))
     axes = axes.flatten()
     
@@ -199,13 +199,13 @@ def outlier_eda(outliers_info):
 # IT24610824: CLASS BALANCING & AUGMENTATION
 
 def analyze_class_distribution(samples):
-    """Analyze class distribution"""
+    #Analyze class distribution
     class_counts = Counter(int(sample['label']) for sample in samples)
     imbalance_ratio = max(class_counts.values()) / min(class_counts.values())
     return class_counts, imbalance_ratio
 
 def create_balancing_strategy(class_counts, target_samples=300):
-    """Create balancing strategy"""
+    #Create balancing strategy
     strategy = {}
     for cls, count in class_counts.items():
         if count < target_samples:
@@ -217,7 +217,7 @@ def create_balancing_strategy(class_counts, target_samples=300):
     return strategy
 
 def apply_augmentation(image, label):
-    """Apply augmentation based on class"""
+    #Apply augmentation based on class
     aug_prob = {0: 0.2, 1: 0.4, 2: 0.6, 3: 0.8, 4: 0.8}
     
     if np.random.random() < aug_prob.get(label, 0.3):
@@ -231,7 +231,7 @@ def apply_augmentation(image, label):
     return image
 
 def balance_augment_eda(class_counts, strategy):
-    """IT24610824 EDA: Class distribution visualization"""
+    #IT24610824 EDA: Class distribution visualization
     fig, ((ax1, ax2), (ax3, ax4)) = plt.subplots(2, 2, figsize=(14, 10))
     
     classes = list(class_counts.keys())
@@ -279,7 +279,7 @@ def balance_augment_eda(class_counts, strategy):
 # IT24100264: IMAGE NORMALIZATION & PREPROCESSING
 
 def analyze_pixel_distributions(samples):
-    """Analyze pixel distributions"""
+    #Analyze pixel distributions
     pixel_stats = {'means': [], 'stds': [], 'mins': [], 'maxs': []}
     channel_stats = {'red': [], 'green': [], 'blue': []}
     
@@ -310,7 +310,7 @@ def analyze_pixel_distributions(samples):
     return stats
 
 def normalize_image(image):
-    """Comprehensive image normalization"""
+    #Comprehensive image normalization
     if len(image.shape) == 3:
         img_lab = cv2.cvtColor(image.astype(np.uint8), cv2.COLOR_RGB2LAB)
         clahe = cv2.createCLAHE(clipLimit=3.0, tileGridSize=(8,8))
@@ -328,7 +328,7 @@ def normalize_image(image):
     return img_norm
 
 def preprocessing_eda(pixel_stats):
-    """IT24100264 EDA: Pixel distribution visualization"""
+    #IT24100264 EDA: Pixel distribution visualization
     fig, ((ax1, ax2), (ax3, ax4)) = plt.subplots(2, 2, figsize=(12, 8))
     
     # Pixel statistics
@@ -372,7 +372,7 @@ def preprocessing_eda(pixel_stats):
 # IT24100348: FEATURE ENGINEERING
 
 def extract_retinal_features(samples):
-    """Extract medical features from retinal images"""
+    #Extract medical features from retinal images
     features = {
         'brightness_mean': [], 'contrast_std': [], 'red_dominance': [],
         'green_vessel_density': [], 'texture_variance': []
@@ -391,7 +391,7 @@ def extract_retinal_features(samples):
     return {k: np.array(v) for k, v in features.items() if v}
 
 def extract_single_features(img):
-    """Extract features from single image"""
+    #Extract features from single image
     features = {}
     gray = cv2.cvtColor(img, cv2.COLOR_RGB2GRAY) if len(img.shape) == 3 else img
     
@@ -413,7 +413,7 @@ def extract_single_features(img):
     return features
 
 def analyze_feature_correlations(features, samples):
-    """Analyze feature correlations with DR severity"""
+    #Analyze feature correlations with DR severity
     labels = []
     for i, sample in enumerate(samples):
         if i >= len(list(features.values())[0]):
@@ -435,7 +435,7 @@ def analyze_feature_correlations(features, samples):
     return correlations
 
 def feature_eda(features, correlations, samples):
-    """IT24100348 EDA: Feature analysis visualization"""
+    #IT24100348 EDA: Feature analysis visualization
     fig, ((ax1, ax2), (ax3, ax4)) = plt.subplots(2, 2, figsize=(14, 10))
     
     # Correlation with target
@@ -503,7 +503,7 @@ def feature_eda(features, correlations, samples):
 # IT24100255: DATA SPLITTING & SCALING
 
 def prepare_data_splits(samples):
-    """Create stratified train/validation/test splits"""
+    #Create stratified train/validation/test splits
     labels = [int(sample['label']) for sample in samples]
     
     train_val_samples, test_samples, train_val_labels, test_labels = train_test_split(
@@ -518,7 +518,7 @@ def prepare_data_splits(samples):
     return train_samples, val_samples, test_samples
 
 def compute_scaling_parameters(samples):
-    """Compute global scaling parameters"""
+    #Compute global scaling parameters
     all_pixels = []
     
     for sample in samples[:min(100, len(samples))]:
@@ -540,7 +540,7 @@ def compute_scaling_parameters(samples):
     }
 
 def scaling_eda(train_samples, val_samples, test_samples, scaling_params):
-    """IT24100255 EDA: Data splits and scaling visualization"""
+    #IT24100255 EDA: Data splits and scaling visualization
     fig, ((ax1, ax2), (ax3, ax4)) = plt.subplots(2, 2, figsize=(14, 10))
     
     # Split distribution
@@ -616,7 +616,7 @@ def scaling_eda(train_samples, val_samples, test_samples, scaling_params):
 # INTEGRATED PIPELINE
 
 def create_integrated_pipeline(scaling_params):
-    """Complete preprocessing pipeline"""
+    #Complete preprocessing pipeline
     
     def preprocess_sample(sample, is_training=True):
         try:
@@ -655,7 +655,7 @@ def create_integrated_pipeline(scaling_params):
     return preprocess_sample
 
 def validate_pipeline(train_samples, val_samples, test_samples, preprocessing_fn):
-    """Validate integrated pipeline"""
+    #Validate integrated pipeline
     validation_results = {}
     splits = {'train': train_samples[:20], 'val': val_samples[:10], 'test': test_samples[:10]}
     
@@ -687,7 +687,7 @@ def validate_pipeline(train_samples, val_samples, test_samples, preprocessing_fn
     return validation_results
 
 def visualize_integrated_pipeline(validation_results):
-    """Visualize integrated pipeline performance"""
+    #Visualize integrated pipeline performance
     fig, ((ax1, ax2), (ax3, ax4)) = plt.subplots(2, 2, figsize=(14, 10))
     
     splits = list(validation_results.keys())
@@ -732,7 +732,7 @@ def visualize_integrated_pipeline(validation_results):
 # MAIN EXECUTION
 
 def run_complete_pipeline():
-    """Execute complete preprocessing pipeline"""
+    #Execute complete preprocessing pipeline
     try:
         # IT24100259: Data Loading & Missing Data
         print("\n[IT24100259] Loading dataset and analyzing missing data...")

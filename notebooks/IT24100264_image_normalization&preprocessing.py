@@ -1,7 +1,7 @@
 # IT24100264: IMAGE NORMALIZATION & PREPROCESSING
 
 def analyze_pixel_distributions(samples):
-    """Analyze pixel distributions"""
+    #Analyze pixel distributions
     pixel_stats = {'means': [], 'stds': [], 'mins': [], 'maxs': []}
     channel_stats = {'red': [], 'green': [], 'blue': []}
     
@@ -32,7 +32,7 @@ def analyze_pixel_distributions(samples):
     return stats
 
 def normalize_image(image):
-    """Comprehensive image normalization"""
+    #Comprehensive image normalization
     if len(image.shape) == 3:
         img_lab = cv2.cvtColor(image.astype(np.uint8), cv2.COLOR_RGB2LAB)
         clahe = cv2.createCLAHE(clipLimit=3.0, tileGridSize=(8,8))
@@ -49,8 +49,8 @@ def normalize_image(image):
     
     return img_norm
 
-def visualize_member4_eda(pixel_stats):
-    """IT24100264 EDA: Pixel distribution visualization"""
+def preprocessing_eda(pixel_stats):
+    #IT24100264 EDA: Pixel distribution visualization
     fig, ((ax1, ax2), (ax3, ax4)) = plt.subplots(2, 2, figsize=(12, 8))
     
     # Pixel statistics

@@ -1,7 +1,7 @@
 # IT24100255: DATA SPLITTING & SCALING
 
 def prepare_data_splits(samples):
-    """Create stratified train/validation/test splits"""
+    #Create stratified train/validation/test splits
     labels = [int(sample['label']) for sample in samples]
     
     train_val_samples, test_samples, train_val_labels, test_labels = train_test_split(
@@ -16,7 +16,7 @@ def prepare_data_splits(samples):
     return train_samples, val_samples, test_samples
 
 def compute_scaling_parameters(samples):
-    """Compute global scaling parameters"""
+    #Compute global scaling parameters
     all_pixels = []
     
     for sample in samples[:min(100, len(samples))]:
@@ -37,8 +37,8 @@ def compute_scaling_parameters(samples):
         'pixels_analyzed': len(all_pixels)
     }
 
-def visualize_member6_eda(train_samples, val_samples, test_samples, scaling_params):
-    """IT24100255 EDA: Data splits and scaling visualization"""
+def scaling_eda(train_samples, val_samples, test_samples, scaling_params):
+    #IT24100255 EDA: Data splits and scaling visualization
     fig, ((ax1, ax2), (ax3, ax4)) = plt.subplots(2, 2, figsize=(14, 10))
     
     # Split distribution
